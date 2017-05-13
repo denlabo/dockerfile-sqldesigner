@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+
+    db:
+        image: mysql:5.7
+        volumes:
+            - ./db_data:/var/lib/mysql
+            - ./database/php-mysql-schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+        environment:
+            MYSQL_ROOT_PASSWORD: "foobar"
+            MYSQL_USER: "sqldesigner_db"
+            MYSQL_PASSWORD: "sqldesigner_db"
+            MYSQL_DATABASE: "sqldesigner_db"
+
+    sqldesigner:
+        build: .
+        links:
+            - db
+        ports:
+            - "3000:80"
+        environment:
+            MYSQL_SERVER: "db"
+            MYSQL_USER: "sqldesigner_db"
+            MYSQL_PASSWORD: "sqldesigner_db"
+            MYSQL_DATABASE: "sqldesigner_db"
+
+volumes:
+    db_data:
