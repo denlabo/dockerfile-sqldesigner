@@ -56,7 +56,8 @@ RUN sed --in-place -E "s/(define\(\"SERVER\",)\"localhost\"(\);)/\1 \$_ENV['MYSQ
 # Change the default value of the save keyword
 ARG SQLDESIGNER_DEFAULT_SAVE_KEYWORD=""
 RUN if [ -n "${SQLDESIGNER_DEFAULT_SAVE_KEYWORD}" ]; then \
-		echo "<script> d.setOption('lastUsedName', '${SQLDESIGNER_DEFAULT_SAVE_KEYWORD}'); </script>" >> /var/www/html/index.html;\
+		echo "<script> d.setOption('lastUsedName', '${SQLDESIGNER_DEFAULT_SAVE_KEYWORD}'); </script>" >> /var/www/html/index.html; \
+		sed --in-place -E "s/this._name = \"\";/this._name = \"${SQLDESIGNER_DEFAULT_SAVE_KEYWORD}\";/g" /var/www/html/js/io.js;\
 	fi
 
 # Enable the Basic Authentication
