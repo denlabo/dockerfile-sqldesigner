@@ -96,7 +96,7 @@ You can store an XML file (designed schemes) of **php-file** backend to the spec
 
 Example for store to MySchemes directory on your home directory:
 ```
-$ docker run -it --rm -p 8080:80 -v ~/MySchemes:/var/www/html/backend/php-file/data/ sqldesigner
+$ docker run -it --rm -p 8080:80 -v ~/MySchemes:/backend-data/php-file/ denlabo/sqldesigner
 ```
 
 Also refer to Docker documentation: [Mount a host directory as a data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume).
@@ -110,7 +110,7 @@ Example for store to MySchemeDB directory on your home directory:
 $ mkdir -p ~/MySchemeDB
 $ wget -O ~/MySchemeDB/wwwsqldesigner.sqlite https://github.com/Lt-Mayonesa/sqldesigner/blob/1fbeedecab201c5194c0c31cd18d9d476e43baab/backend/php-sqlite/wwwsqldesigner.sqlite?raw=true
 
-$ docker run -it --rm -p 8080:80 -v ~/MySchemeDB:/var/www/html/backend/php-sqlite/data/ sqldesigner
+$ docker run -it --rm -p 8080:80 -v ~/MySchemeDB:/backend-data/php-sqlite/ denlabo/sqldesigner
 ```
 
 Also refer to Docker documentation: [Mount a host directory as a data volume](https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume).
@@ -146,7 +146,7 @@ In this time, you need to set the following parameters:
 	* A database name on your MySQL server.
 
 ```
-$ docker run -it --rm -p 8080:80 -e MYSQL_SERVER=mysql.example.com MYSQL_USER=user MYSQL_PASSWORD=password MYSQL_DATABASE=database sqldesigner
+$ docker run -it --rm -p 8080:80 -e MYSQL_SERVER=mysql.example.com MYSQL_USER=user MYSQL_PASSWORD=password MYSQL_DATABASE=database denlabo/sqldesigner
 ```
 
 
