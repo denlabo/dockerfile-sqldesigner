@@ -82,6 +82,16 @@ However, you can change the default backend with append ``SQLDESIGNER_DEFAULT_BA
 
 	$ docker build -t sqldesigner --build-arg SQLDESIGNER_DEFAULT_BACKEND="php-sqlite" .
 
+### Change the Default Value of the Save Keyword
+
+In the initial state, the default value of the save keyword is empty.
+The save keyword will be used as a file name in php-file backend, for example.
+
+You can change the default value of the save keyword with append ``SQLDESIGNER_DEFAULT_SAVE_KEYWORD`` parameter
+ as the Build Argument of ``docker build`` command, as follows.
+
+$ docker build -t sqldesigner --build-arg SQLDESIGNER_DEFAULT_SAVE_KEYWORD="foo.xml" .
+
 
 ----
 

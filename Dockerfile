@@ -53,6 +53,12 @@ RUN sed --in-place -E "s/(define\(\"SERVER\",)\"localhost\"(\);)/\1 \$_ENV['MYSQ
 	sed --in-place -E "s/(define\(\"PASSWORD\",)\"\"(\);)/\1 \$_ENV['MYSQL_PASSWORD'] \2/g" /var/www/html/backend/php-mysql/index.php && \
 	sed --in-place -E "s/(define\(\"DB\",)\"home\"(\);)/\1 \$_ENV['MYSQL_DATABASE'] \2/g" /var/www/html/backend/php-mysql/index.php
 
+# Change the default value of the save keyword
+ARG SQLDESIGNER_DEFAULT_SAVE_KEYWORD=""
+RUN if [ -n "${SQLDESIGNER_DEFAULT_SAVE_KEYWORD}" ]; then \
+		echo "<script> d.setOption('lastUsedName', '${SQLDESIGNER_DEFAULT_SAVE_KEYWORD}'); </script>" >> /var/www/html/index.html;\
+	fi
+
 # Enable the Basic Authentication
 ARG BASIC_AUTH_HTPASSWD=""
 RUN if [ -n "${BASIC_AUTH_HTPASSWD}" ]; then \
