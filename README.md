@@ -90,7 +90,7 @@ The save keyword will be used as a file name in php-file backend, for example.
 You can change the default value of the save keyword with append ``SQLDESIGNER_DEFAULT_SAVE_KEYWORD`` parameter
  as the Build Argument of ``docker build`` command, as follows.
 
-$ docker build -t sqldesigner --build-arg SQLDESIGNER_DEFAULT_SAVE_KEYWORD="foo.xml" .
+	$ docker build -t sqldesigner --build-arg SQLDESIGNER_DEFAULT_SAVE_KEYWORD="foo.xml" .
 
 
 ----
